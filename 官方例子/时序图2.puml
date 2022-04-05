@@ -1,0 +1,18 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+ApplicationClient -> ApplicationServer: Get Token
+ApplicationServer -> ApplicationServer: Generate Token
+ApplicationServer -> ApplicationClient: Got Token
+ApplicationClient->RtcServer: Join room with token
+RtcServer->RtcServer:Check token and RoomId,UserId,etc.
+RtcServer->ApplicationClient:Return join room result.
+RtcServer->ApplicationClient:Token expire notification.
+ApplicationClient->ApplicationServer:Get new token.
+ApplicationServer->ApplicationServer:Generate new token.
+ApplicationServer->ApplicationClient:Return new token.
+ApplicationClient->RtcServer:Update token.
+
+@enduml

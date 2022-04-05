@@ -1,0 +1,16 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+Host->Host:Generate RoomId
+Host->Client1:Send RoomId
+Host->Client2:Send RoomId
+Host->Host:Generate Token
+Client1->Client1:Generate Token
+Client2->Client2:Generate Token
+Host->Host:Join room with token
+Client1->Client1:Join room with token
+Client2->Client2:Join room with token
+
+@enduml
