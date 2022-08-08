@@ -1,0 +1,14 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+"Client Application" -> "Pico Platform SDK": Call GetAccessToken
+"Pico Platform SDK" -> "Client Application": Returns an access token
+"Client Application" -> "Pico Platform SDK": Call GetLoggedInUser
+"Pico Platform SDK" -> "Client Application": Returns the user info struct with userOpenId
+"Client Application" -> "Your Server":Pass access token and userOpenId to your server for verification
+"Your Server"->"Pico Server":Send S2S POST request to verify user.
+"Pico Server"-> "Your Server":Pico Server return the verification result.
+"Your Server"->"Client Application":Pass verification result to the client.
+@enduml
